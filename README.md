@@ -1,5 +1,6 @@
 # Face-Mask Detector
-Real time face-mask detection using Deep Learning and OpenCV
+Real time face-mask detection using Deep Learning and OpenCV.
+Based on: https://github.com/HaroldMurcia/FaceMaskDetector
 
 ## About Project
 This project uses a Deep Neural Network, more specifically a Convolutional Neural Network, to differentiate between images of people with and without masks. The CNN manages to get 
@@ -9,7 +10,7 @@ wearing/removing mask and display of prediction.
 
 #### The model is capable of predicting multiple faces with or without masks at the same time
 
-## Working 
+## Working
 
 ### No Mask
 
@@ -21,7 +22,7 @@ wearing/removing mask and display of prediction.
 
 ## Dataset
 
-The data used can be downloaded through this [link](https://data-flair.training/blogs/download-face-mask-data/) or can be downloaded from this repository as well (folders 'test' and 
+The data used can be downloaded through this [link](https://data-flair.training/blogs/download-face-mask-data/) or can be downloaded from this repository as well (folders 'test' and
 'train'). There are 1314 training images and 194 test images divided into two catgories, with and without mask.
 
 ## How to Use
@@ -31,7 +32,7 @@ To use this project on your system, follow these steps:
 1.Clone this repository onto your system by typing the following command on your Command Prompt:
 
 ```
-git clone https://github.com/Karan-Malik/FaceMaskDetector
+git clone https://github.com/HaroldMurcia/FaceMaskDetector
 ```
 followed by:
 
@@ -39,11 +40,13 @@ followed by:
 cd FaceMaskDetector
 ```
 
-2. Ensure that you have all the required libraries used in facemask.py. In case a library is missing, download it using pip, by typing this on your Command Prompt:
+2. Ensure that you have all the required libraries used in facemask.py. and train.py In case a library is missing, download it using pip, by typing this on your Command Prompt:
 ```
-pip install 'library name'
+pip3 install 'library name'
 ```
 Replace 'library-name' by the name of the library to be downloaded.
+
+Use python 3.8
 
 3. Run facemask.py by typing the following command on your Command Prompt:
 ```
@@ -51,4 +54,3 @@ python facemask.py
 ```
 
 #### The Project is now ready to use !!
-
