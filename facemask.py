@@ -22,6 +22,9 @@ import datetime
 cap=cv2.VideoCapture(2)
 face_cascade=cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 mymodel = load_model('mymodel.h5')
+pred_1=0
+pred_2=0
+pred_3=0
 while cap.isOpened():
     _,img=cap.read()
     face=face_cascade.detectMultiScale(img,scaleFactor=1.1,minNeighbors=4)
@@ -32,12 +35,16 @@ while cap.isOpened():
         test_image=image.img_to_array(test_image)
         test_image=np.expand_dims(test_image,axis=0)
         pred=mymodel.predict_classes(test_image)[0][0]
-        if pred==1:
+        prob=mymodel.predict_proba(test_image)
+        if pred==1 and pred_1==1 and pred_2==1 and pred_3==1:
             cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),3)
             cv2.putText(img,'SIN MASCARA',((x+w)//2,y+h+20),cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,255),3)
-        else:
+        elif pred==0 and pred_1==0 and pred_2==0 and pred_3==0:
             cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),3)
             cv2.putText(img,'CON MASCARA',((x+w)//2,y+h+20),cv2.FONT_HERSHEY_SIMPLEX,1,(0,255,0),3)
+        pred_3=pred_2
+        pred_2=pred_1
+        pred_1=pred
         datet=str(datetime.datetime.now())
         cv2.putText(img,datet,(400,450),cv2.FONT_HERSHEY_SIMPLEX,0.5,(255,255,255),1)
 

@@ -13,6 +13,7 @@ from keras.layers import Conv2D,MaxPooling2D,SpatialDropout2D,Flatten,Dropout,De
 from keras.models import Sequential,load_model
 from keras.optimizers import Adam
 from keras.preprocessing import image
+from keras.preprocessing.image import ImageDataGenerator
 import cv2
 import datetime
 
@@ -28,7 +29,7 @@ model.add(Dense(100,activation='relu'))
 model.add(Dense(1,activation='sigmoid'))
 
 model.compile(optimizer='adam',loss='binary_crossentropy',metrics=['accuracy'])
-from keras.preprocessing.image import ImageDataGenerator
+
 train_datagen = ImageDataGenerator(
         rescale=1./255,
         shear_range=0.2,
