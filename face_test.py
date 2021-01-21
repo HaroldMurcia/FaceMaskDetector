@@ -42,6 +42,7 @@ while cap.isOpened():
             prob=mymodel.predict_proba(test_image)
             if pred==1:
                 cv2.rectangle(frame,(x1,y1),(x2,y2),(0,0,255),3)
+                cv2.imwrite('NOMASK_face.jpg',frame[y1:y2,x1:x2])
             else:
                 cv2.rectangle(frame,(x1,y1),(x2,y2),(0,255,0),3)
     else:
@@ -50,7 +51,8 @@ while cap.isOpened():
         continue
     datet=str(datetime.datetime.now())
     cv2.putText(frame,datet,(100,50),cv2.FONT_HERSHEY_SIMPLEX,1,(255,255,255),1)
-    cv2.imshow('img',frame)
+    final_img = cv2.resize(frame, (960,540))
+    cv2.imshow('img',final_img)
 
     if cv2.waitKey(1)==ord('q'):
         break
